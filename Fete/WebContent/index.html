@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Fete - Make your moments unforgettable!</title>
+
+<!-- AngularJs files -->
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+
+<script type="text/javascript" src="js/app/fete.js"></script>
+<script type="text/javascript" src="js/controller/restaurantController.js"></script>
+<script type="text/javascript" src="js/controller/loginController.js"></script>
+
+<!-- Bootstrap files -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Google fonts -->
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
+<style type="text/css">
+.navbar a{
+	color: white;
+}
+.header {
+	background-color: transparent;
+}
+footer {
+	color: #F2F1EF; background-color: #2C3E50;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow:hidden;
+}
+
+footer a {
+	color: #ffffff;
+}
+
+footer a:HOVER {
+	color: orange;
+	text-decoration: none;
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+.number-circle {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	font-size: 30px;
+	background-color: orange; 
+	color: #ffffff;
+	text-align: center;
+	padding: 10px;
+	margin: auto;
+}
+
+.card {
+	padding: 25px;background-color: #f9f9f9; text-align: center;
+	box-shadow: 2px 2px 4px #888888;
+}
+
+.card p {
+	padding-top: 25px;
+	font-size: 18px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+
+<script type="text/javascript">
+$('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+    $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
+});
+</script>
+
+</head>
+<body data-ng-app="fete" style="font-family: 'Josefin Sans', sans-serif; background-color: #f1f1f1;">
+	<div data-ng-include="'html/navbar.html'" data-ng-controller="loginController"></div>	
+	<div data-ng-view></div>
+	<div data-ng-include="'html/footer.html'"></div>
+</body>
+</html>

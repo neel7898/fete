@@ -1,0 +1,86 @@
+<nav class="navbar navbar-fixed-top" style="background-color: rgba(0, 0, 0, 0.5);border: none;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#" style="color: orange;">Fete</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#home" ng-hide="sessionUser">Home</a></li>
+        <li><a href="#userDashboard" ng-show="sessionUser">Home</a></li>
+        <li><a href="#" ng-hide="sessionUser">Plan Your Party</a></li>
+        <li><a href="#" ng-hide="sessionUser">Venues</a></li>
+        <li><a href="#" ng-hide="sessionUser">Packages</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon glyphicon-map-marker"></span> Ujjain</a>
+        <ul class="dropdown-menu">
+            <li><a href="">Ujjain</a></li>
+          </ul>
+        </li>
+        <li><a href="" data-toggle="modal" data-target="#loginModal" ng-hide="sessionUser"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="" ng-show="sessionUser"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+		<div class="row">
+			<div class="col-sm-5" style="background-color: orange; height: 500px; color: #ffffff; padding: 25px;">
+				<h1>Fete</h1>
+				<h3 style="margin-top: 100px;">Login</h3>
+				<h4 style="margin-top: 30px;">Login to get access to your plans, quick search etc.</h4>
+			</div>
+			<div class="col-sm-7" style="background-color: #f1f1f1; height: 500px;"><div>
+				<button type="button" class="close" data-dismiss="modal">&times;</button></div><br>
+				<div align="center" style="width: 90px; height: 90px; border-radius: 50%; background-color: #ffffff; margin: auto; margin-top: 50px; padding: 15px; font-size: 50px;"><span class="glyphicon glyphicon-user" style="color: orange;"></span></div>
+				<div>
+				<div style="margin-top: 5px; text-align: center;" id="message">{{message}}</div>
+					<form class="form-horizontal" style="margin-top: 20px;">
+    <div class="form-group">
+      <div class="col-sm-12">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+     <input type="text" class="form-control" placeholder="Enter unique ID/email/mobile number" name="email" data-ng-model="login.feteId">
+      </div></div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">    
+       <div class="input-group">
+    	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>     
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" data-ng-model="login.password">
+      </div></div>
+    </div>
+    <div class="form-group">
+    	<div class="col-sm-12">
+    		 <div class="checkbox">
+          <label class="checkbox-inline"><input type="checkbox" name="remember"> Remember me</label>
+        	<label class="checkbox-inline" style="margin-left: 80px;"><a href="">Forgot Password?</a></label>
+        </div>  
+    	</div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-default" style="width:100%; color: #ffffff;border-radius:0px; background-color: orange;" data-ng-click="loginUser(login);">Login</button>
+        <button class="btn btn-default" style="width:100%; color: black;border-radius:0px; background-color: #ffffff; margin-top: 15px;">New User? Register</button>
+      </div>
+    </div>
+  </form>
+				</div>
+				
+			</div>
+		</div>   
+    </div>
+
+  </div>
+</div>
