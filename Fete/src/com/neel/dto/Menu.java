@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -32,6 +34,28 @@ public class Menu {
 	
 	@Column(name="cost")
 	private double cost;
+	
+	@ManyToOne
+	private Restaurant rest;
+	
+	public Restaurant getRest() {
+		return rest;
+	}
+
+	public void setRest(Restaurant rest) {
+		this.rest = rest;
+	}
+
+	public Packages getPackages() {
+		return packages;
+	}
+
+	public void setPackages(Packages packages) {
+		this.packages = packages;
+	}
+
+	@ManyToOne
+	private Packages packages;
 
 	public String getCategory() {
 		return category;

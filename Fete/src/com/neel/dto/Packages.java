@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -26,7 +28,26 @@ public class Packages {
 	@Column(name="costPerPerson")
 	private double costPerPerson;
 	
-	@OneToMany(fetch=FetchType.LAZY, targetEntity= Menu.class)
+	@ManyToOne
+	private Restaurant rest;
+	
+	public String getPackageId() {
+		return packageId;
+	}
+
+	public void setPackageId(String packageId) {
+		this.packageId = packageId;
+	}
+
+	public Restaurant getRest() {
+		return rest;
+	}
+
+	public void setRest(Restaurant rest) {
+		this.rest = rest;
+	}
+
+	@OneToMany
 	private List<Menu> menu;
 
 	public String getName() {

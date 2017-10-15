@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/app/fete.js"></script>
 <script type="text/javascript" src="js/controller/restaurantController.js"></script>
 <script type="text/javascript" src="js/controller/loginController.js"></script>
+<script type="text/javascript" src="js/controller/accountController.js"></script>
 
 <!-- Bootstrap files -->
 <!-- Latest compiled and minified CSS -->
@@ -23,6 +24,7 @@
 
 <!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style type="text/css">
 .navbar a{
@@ -95,14 +97,47 @@ footer a:HOVER {
   100% { transform: rotate(360deg); }
 }
 
+.dashboard-menu {
+	width: 100%; margin-top: 50px;background-color: orange; color: black; height: 40px; padding-left: 20px; padding-top: 10px; margin-bottom: none;
+}
+
+.side-nav a {
+	text-decoration: none;
+}
+
+.dashboard-menu:HOVER {
+	cursor: pointer;
+}
+
+.side-menu {
+	width: 100%; color: black; height: 40px; padding-left: 20px; padding-top: 10px;font-size: 16px;color: #666666;
+}
+
+.side-menu:HOVER {
+	background-color: #e5e5e5; cursor: pointer;
+}
+
+.dashboard-card {
+	padding: 15px;
+	height: 100px; 
+}
+
+.overlay {
+	background-color: rgba(0, 0, 0, 0.7);
+	height: 100%;
+	width: 100%;
+	margin: 20px;
+}
+
+.dashboard-card-content {
+	color: #ffffff;
+	padding: 20px;
+	margin: auto;
+	text-align: center;
+}
 </style>
 
-<script type="text/javascript">
-$('[data-toggle=offcanvas]').click(function() {
-    $('.row-offcanvas').toggleClass('active');
-    $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
-});
-</script>
+
 
 </head>
 <body data-ng-app="fete" style="font-family: 'Josefin Sans', sans-serif; background-color: #f1f1f1;">

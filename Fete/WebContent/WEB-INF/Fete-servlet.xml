@@ -13,8 +13,39 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.neel" />
 	<mvc:annotation-driven />
-
+	
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+		
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
+        <property name="driverClassName"  value="org.postgresql.Driver"></property>  
+        <property name="url" value="jdbc:postgresql://localhost:5432/postgres"></property>  
+        <property name="username" value="postgres"></property>  
+        <property name="password" value="Neel@7898"></property>  
+    </bean>
+    
+     <bean id="mysessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource"></property>  
+          
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property> 
+        <property name="configurationClass"> <value>org.hibernate.cfg.AnnotationConfiguration</value> </property> 
+        <property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">create</prop>  
+                <prop key="hibernate.show_sql">true</prop>  
+                <prop key="format_sql">true</prop>
+                <prop key="use_sql_comments">true</prop>  
+            </props>  
+        </property>  
+    </bean>  	
+    
+    <bean id="template" class="org.springframework.orm.hibernate3.HibernateTemplate">  
+    <property name="sessionFactory" ref="mysessionFactory"></property>  
+    </bean>
+    
+     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="mysessionFactory"/>
+    </bean> 
 
 </beans>

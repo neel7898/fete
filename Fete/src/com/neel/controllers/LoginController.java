@@ -50,7 +50,7 @@ public class LoginController {
 		}else{
 			message = "Invalid credentials";
 		}
-		return message;
+		return message+"~"+id;
 	}
 
 	private String restaurentLogin(String id, String password, HttpSession session) {
@@ -64,7 +64,7 @@ public class LoginController {
 		}else{
 			message = "Invalid credentials";
 		}
-		return message;
+		return message+"~"+id;
 	}
 
 	private String loginWithEmail(String id, String password, HttpSession session) {

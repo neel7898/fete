@@ -12,14 +12,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
  * @author Neel
  *
  */
+
 
 @Entity(name="Restaurant")
 public class Restaurant {
@@ -33,7 +37,8 @@ public class Restaurant {
 	@Column(name="name")
 	private String name;
 	
-	@OneToOne(fetch=FetchType.EAGER, targetEntity=Address.class)
+	@OneToOne(fetch = FetchType.LAZY)
+	@Cascade(value = CascadeType.SAVE_UPDATE)
 	private Address address;
 	
 	@Column(name="contactNo")
@@ -48,10 +53,10 @@ public class Restaurant {
 	@Column(name="djCharge")
 	private double djCharge;
 	
-	@OneToMany(fetch=FetchType.LAZY, targetEntity= Packages.class)
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Packages> packages;
 	
-	@OneToMany(fetch=FetchType.LAZY, targetEntity= Menu.class)
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Menu> menu;
 	
 	@Column(name="password")

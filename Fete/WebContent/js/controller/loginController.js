@@ -22,13 +22,13 @@ app.controller("loginController", function($scope,$http,$location,$rootScope) {
 		            password: login.password,
 		        }
 		    }).success(function(data){
-		    	$scope.message = data;
 		    	console.log(data);
-		    	if($scope.message == "success"){
+		    	if(data.substr(0, 7) == "success"){
 		    	console.log('login successful');
 		    	$("[data-dismiss=modal]").trigger({ type: "click" });
 		    	$rootScope.sessionUser = true;
 		    	sessionStorage.setItem("sessionUser",true);
+		    	sessionStorage.setItem("feteId", data.substring(8))
 		    	$location.path('/userDashboard');
 		    	}else{
 		    		alert(data);

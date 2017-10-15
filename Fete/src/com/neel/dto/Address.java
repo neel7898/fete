@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -35,6 +37,17 @@ public class Address {
 	
 	@Column(name="state")
 	private String state;
+	
+	@OneToOne
+	private Restaurant rest;
+
+	public Restaurant getRest() {
+		return rest;
+	}
+
+	public void setRest(Restaurant rest) {
+		this.rest = rest;
+	}
 
 	public String getAddressLine() {
 		return addressLine;

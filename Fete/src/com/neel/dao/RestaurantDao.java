@@ -1,8 +1,7 @@
 package com.neel.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import com.neel.dto.Address;
@@ -12,35 +11,27 @@ import com.neel.dto.Restaurant;
 @Component
 public class RestaurantDao {
 	
-	SessionFactory factory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+	@Autowired
+	HibernateTemplate template;
 	
-	public Restaurant registerRestaurant(Restaurant restaurant, Address add) {
-		Session session = factory.openSession();
-		session.beginTransaction();
-		restaurant.setPassword(restaurant.generatePassword());
-		restaurant.setAddress(add);
-		session.save(restaurant);
-		session.getTransaction().commit();
-		session.close();
-		saveLoginType(restaurant);
+	public Restaurant registerRestaurant(Restaurant restaurant) {
+		template.save(restaurant);
+		this.saveLoginType(restaurant);
 		return restaurant;
 	}
 
 	private void saveLoginType(Restaurant restaurant) {
 		 LoginType loginType = new LoginType(restaurant.getEmail(),restaurant.getFeteId());
-		 Session session = factory.openSession();
-		 session.beginTransaction();
-		 session.save(loginType);
-		 session.getTransaction().commit();
-		 session.close();
+		 template.save(loginType);
 	}
 
-	public Address addAddress(Address add) {
-		Session session = factory.openSession();
-		session.beginTransaction();
-		session.save(add);
-		session.getTransaction().commit();
-		session.close();
+	public Restaurant getRestaurantById(String id){
+		Restaurant rest = template.get(Restaurant.class, id);
+		return rest;
+	}
+	
+	public Address getAddressByRestaurantId(Restaurant restaurant){
+		Address add = template.get(Address.class, restaurant.getAddress().getAddressId());
 		return add;
 	}
 
